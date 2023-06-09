@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotels</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <?php 
@@ -49,14 +50,38 @@
     
     ];
     ?>
-    <?php foreach ($hotels as $albergo) {
-        echo '<li>' . $albergo['name'] . " " . $albergo['vote'] . " parking = ";
-        echo ($albergo['parking'] ? 'yes' : 'no');
-        '</li>';
+    <table class=" table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrizione</th>
+            <th scope="col">Parking</th>
+            <th scope="col">Vote</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($hotels as $albergo) { ?>
+            <tr>
+                <td><?php echo $albergo['name']; ?></td>
+                <td><?php echo $albergo['description']; ?></td>
+                <td><?php echo ($albergo['parking'] ? 'Yes' : 'No'); ?></td>
+                <td>
+                    <?php
+                    $stars = '';
+                    $vote = $albergo['vote'];
 
-        
-    }
-    
-    ?>
+                    for ($i = 0; $i < $vote; $i++) {
+                        $stars .= '<i class="fas fa-star"></i>';
+                    }
+
+                    echo $stars;
+                    ?>
+                </td>
+                
+                
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
 </body>
 </html>
