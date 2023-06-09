@@ -50,7 +50,10 @@
     ];
     ?>
     <?php foreach ($hotels as $albergo) {
-        echo '<li>' . $albergo['name'] . '</li>';
+        echo '<li>' . $albergo['name'] . " " . $albergo['vote'] . " parking = ";
+        echo ($albergo['parking'] ? 'yes' : 'no');
+        '</li>';
+
         
     }
     
